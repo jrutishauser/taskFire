@@ -19,10 +19,17 @@
 		<script src="bower_components/angularfire/dist/angularfire.js"></script>
 		<!-- endbower -->	
 	</head>
-    <body>
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-		{{'hello world'}}
-        <script src="js/plugins.js"></script>
+    <body ng-app='taskfire'>
+		<section id='tasklist' ng-controller='TaskController as tasks'> 
+				<ul>	 
+						<li ng-repeat='todoItem in tasks.todoItems'>
+						<input type='checkbox' ng-model='todo.completed'>	
+						<span ng-class='{finished: todo.completed}'>
+						{{todoItem.task}}</span></li>
+		
+				</ul>	
+		</section><!--close taskfire -->	
+		<script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
