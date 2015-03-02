@@ -22,10 +22,10 @@
     <body ng-app='taskfire'>
 		<section id='tasklist' ng-controller='TaskController as tasks'> 
 				<div class='additem'>	
-					<form>
-						<input type='text' ng-model='newTodoItem' 
+					<form ng-submit='tasks.addItem()'>
+						<input type='text' ng-model='tasks.newTodoItem' 
 						placeholder="Add a task...">	
-					</form ng-submit='addItem(newTodoItem)'>
+					</form>
 				</div>
 				<p>{{newTodoItem}}</p>	
 				<ul>	 

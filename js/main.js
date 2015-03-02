@@ -4,15 +4,20 @@
 			var ref = new Firebase('https://taskfire.firebaseio.com/tasklist');	
 			var sync = $firebase(ref);	
 			this.todoItems = [
-				{task:'learn firebase', completed: false},
-				{task:'play with angular', completed: true}
-			];
+			 ];
+			 ref.on('value', function(snapshot){
+				var remTodoItems = (snapshot.val());
+				remTodoItems = remTodoItems.val();
+				console.log(remTodoItems.key());
+			   	todoItems = remTodoItems;
+				console.log(this.todoItems);	
+			 });
 			this.addItem = function(newTodoItem){
 				this.todoItems.push({task: this.newTodoItem, completed: false});	
-				this.newTodoItem = "";	
+				sync.$push({task: this.newTodoItem, completed: false});	
+				this.newTodoItem = "";
 			};	
-			sync.$set(this.todoItems);	
-			console.log(this.todoItems);	
+			// console.log(this.todoItems);	
 		})
 
 
