@@ -21,10 +21,17 @@
 	</head>
     <body ng-app='taskfire'>
 		<section id='tasklist' ng-controller='TaskController as tasks'> 
+				<div class='additem'>	
+					<form>
+						<input type='text' ng-model='newTodoItem' 
+						placeholder="Add a task...">	
+					</form ng-submit='addItem()'>
+				</div>
+				<p>{{newTodoItem}}</p>	
 				<ul>	 
 						<li ng-repeat='todoItem in tasks.todoItems'>
-						<input type='checkbox' ng-model='todo.completed'>	
-						<span ng-class='{finished: todo.completed}'>
+						<input type='checkbox' ng-model='todoItem.completed'>	
+						<span ng-class='{finished: todoItem.completed}'>
 						{{todoItem.task}}</span></li>
 		
 				</ul>	
